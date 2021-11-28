@@ -4,7 +4,7 @@ import { IData } from './interfaces';
 
 import * as S from './styles';
 
-const List: React.FC = () => {
+const List = () => {
   const [data, setData] = useState<IData[]>([
     {
       name: 'Arthur',

@@ -1,15 +1,15 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { IInput } from './interfaces';
 
 import * as S from './styles';
 
-const Input = ({ name, label, error, ...props }: IInput) => {
-  const { register } = useForm();
+const Input = ({ name, label, error, register, ...props }: IInput) => {
+  console.log(register);
   return (
     <S.Container>
       <S.CustomLabel>{label}</S.CustomLabel>
-      <input {...props} {...register(name)} />
+      <input {...props} {...register} />
       <S.CustomError>{error}</S.CustomError>
     </S.Container>
   );
