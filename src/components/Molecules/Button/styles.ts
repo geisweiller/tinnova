@@ -1,7 +1,8 @@
+import React, { ButtonHTMLAttributes, LegacyRef } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../../constants/theme';
 
-export const CustomButton = styled.button`
+export const CustomButton = styled.button<any>`
   border-top: none;
   border-right: none;
   border-left: none;

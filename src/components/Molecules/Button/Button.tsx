@@ -4,7 +4,7 @@ import { IButton } from './interfaces';
 
 import * as S from './styles';
 
-const Button = ({ loading, text, handleClick }: IButton) => {
+const Button = ({ loading, text, handleClick, ...props }: IButton) => {
   const HandleLoading = useCallback(() => {
     if (loading) {
       return <Atoms.Loading />;
@@ -13,7 +13,7 @@ const Button = ({ loading, text, handleClick }: IButton) => {
   }, [loading, text]);
 
   return (
-    <S.CustomButton>
+    <S.CustomButton {...props} onClick={handleClick}>
       <HandleLoading />
     </S.CustomButton>
   );

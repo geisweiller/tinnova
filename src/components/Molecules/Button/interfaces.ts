@@ -1,5 +1,9 @@
-export interface IButton {
+export interface IButton
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   text: string;
-  handleClick: () => void;
+  handleClick?: () => void;
   loading?: boolean;
 }
