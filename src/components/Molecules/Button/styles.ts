@@ -1,8 +1,9 @@
-import React, { ButtonHTMLAttributes, LegacyRef } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../../constants/theme';
+import { IButton } from './interfaces';
 
-export const CustomButton = styled.button<any>`
+export const CustomButton = styled.button<Omit<IButton, 'onClick' | 'text'>>`
   border-top: none;
   border-right: none;
   border-left: none;
@@ -19,10 +20,20 @@ export const CustomButton = styled.button<any>`
 
   cursor: pointer;
 
-  min-height: 50px;
+  height: 50px;
 
   :hover {
     opacity: 0.7;
+  }
+
+  :disabled {
+    background-color: ${theme.colors.lightGrey};
+    color: ${theme.colors.grey};
+    cursor: not-allowed;
+
+    :hover {
+      opacity: 1;
+    }
   }
 `;
 

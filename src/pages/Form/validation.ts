@@ -1,11 +1,11 @@
 import * as yup from 'yup';
 
 export const validationSchema = yup.object().shape({
-  name: yup
+  name: yup.string().required('Campo Obrigatório'),
+  email: yup.string().required('Campo Obrigatório').email('Email inválido'),
+  cpf: yup.string().required('Campo Obrigatório').length(11, 'O CPF deve conter 11 caracteres'),
+  phone: yup
     .string()
-    .length(3, 'Campo deve conter 3 caracteres ou mais')
-    .required('Campo Obrigatório'),
-  email: yup.string().required('Campo Obrigatório'),
-  cpf: yup.string().required('Obrigatório'),
-  phone: yup.string().required('Campo Obrigatório'),
+    .required('Campo Obrigatório')
+    .length(11, 'O telefone deve conter 11 caracteres'),
 });

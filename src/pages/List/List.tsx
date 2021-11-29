@@ -1,30 +1,26 @@
-import React, { useMemo, useState } from 'react';
-import { Atoms, Molecules } from '../../components';
+/* eslint-disable react/display-name */
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { IActions } from '../../assets';
+import { useHistory } from 'react-router-dom';
+import { Molecules } from '../../components';
 import { IData } from './interfaces';
 
 import * as S from './styles';
+import { useData } from '../../contexts/DataContext/DataContext';
 
 const List = () => {
-  const [data, setData] = useState<IData[]>([
-    {
-      name: 'Arthur',
-      email: 'geisweiller@gmail.com',
-      cpf: '05282890550',
-      phone: '1198989898',
+  const history = useHistory();
+  const { data, setData } = useData();
+
+  const handleDelete = useCallback(
+    (cpf) => {
+      const newData = data.filter((item) => item.cpf !== cpf);
+      console.log(newData);
+      setData(newData);
+      localStorage.setItem('data', JSON.stringify(newData));
     },
-    {
-      name: 'Arthur',
-      email: 'geisweiller@gmail.com',
-      cpf: '05282890550',
-      phone: '1198989898',
-    },
-    {
-      name: 'Arthur',
-      email: 'geisweiller@gmail.com',
-      cpf: '05282890550',
-      phone: '1198989898',
-    },
-  ]);
+    [data]
+  );
 
   const columns = useMemo(
     () => [
@@ -44,14 +40,22 @@ const List = () => {
         Header: 'Telefone',
         accessor: 'phone',
       },
+      {
+        Header: 'Excluir',
+        accessor: 'delete',
+        className: 'delete',
+        Cell: ({ row: { original } }: any) => {
+          return <img src={IActions.DeleteIcon} onClick={() => handleDelete(original.cpf)} />;
+        },
+      },
     ],
-    []
+    [handleDelete]
   );
 
   return (
     <S.Container>
       <Molecules.Table columns={columns} data={data} />
-      <Molecules.Button text="Voltar" />
+      <Molecules.Button text="Voltar" handleClick={() => history.push('/')} />
     </S.Container>
   );
 };

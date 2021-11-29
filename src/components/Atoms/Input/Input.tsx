@@ -1,17 +1,33 @@
-import React from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import React, { useEffect, useRef } from 'react';
 import { IInput } from './interfaces';
+import { useField } from '@unform/core';
 
 import * as S from './styles';
 
-const Input = ({ name, label, error, register, ...props }: IInput) => {
-  console.log(register);
+const Input = ({ name, label, ...props }: IInput) => {
+  const { fieldName, defaultValue = '', registerField, error } = useField(name);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    registerField({
+      name: fieldName,
+      ref: inputRef.current,
+      path: 'value',
+    });
+  }, [fieldName, registerField]);
+  console.log(error);
   return (
-    <S.Container>
+    <div>
       <S.CustomLabel>{label}</S.CustomLabel>
-      <input {...props} {...register} />
+      <S.CustomInput
+        {...props}
+        ref={inputRef}
+        id={fieldName}
+        defaultValue={defaultValue}
+        error={!!error}
+      />
       <S.CustomError>{error}</S.CustomError>
-    </S.Container>
+    </div>
   );
 };
 

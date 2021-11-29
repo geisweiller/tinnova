@@ -4,34 +4,7 @@ import styled from 'styled-components';
 import { useTable } from 'react-table';
 import { ITable } from './interfaces';
 
-const Styles = styled.div`
-  padding: 1rem;
-
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
-
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
-
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-`;
+import * as S from './styles';
 
 const Table = ({ columns, data }: ITable) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
@@ -39,29 +12,29 @@ const Table = ({ columns, data }: ITable) => {
     data,
   });
   return (
-    <table {...getTableProps()}>
+    <S.Table {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
+          <S.Tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+              <S.Th {...column.getHeaderProps()}>{column.render('Header')}</S.Th>
             ))}
-          </tr>
+          </S.Tr>
         ))}
       </thead>
       <tbody {...getTableBodyProps()}>
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <tr {...row.getRowProps()}>
+            <S.Tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                return <S.Td {...cell.getCellProps()}>{cell.render('Cell')}</S.Td>;
               })}
-            </tr>
+            </S.Tr>
           );
         })}
       </tbody>
-    </table>
+    </S.Table>
   );
 };
 

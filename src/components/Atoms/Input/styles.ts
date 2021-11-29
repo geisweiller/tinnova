@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 import { theme } from '../../../constants/theme';
+import { IInput } from './interfaces';
 
-export const Container = styled.div`
-  input {
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    outline: none;
-    border-color: ${theme.colors.darkGrey};
-    border-width: 1px;
+export const CustomInput = styled.input<Omit<IInput, 'name' | 'label'>>`
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  outline: none;
+  border-color: ${(props) => (props.error ? theme.colors.red : theme.colors.darkGrey)};
 
-    background-color: transparent;
+  border-width: 1px;
 
-    padding: 0 0 2px 2px;
-    margin-bottom: 8px;
-    width: 100%;
+  background-color: transparent;
 
-    color: ${theme.colors.darkGrey};
-    font-weight: bold;
-  }
+  padding: 0 0 2px 2px;
+  margin-bottom: 8px;
+  width: 100%;
+
+  color: ${theme.colors.darkGrey};
+  font-weight: bold;
 `;
 
 export const CustomError = styled.p`
