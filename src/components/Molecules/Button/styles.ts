@@ -22,6 +22,10 @@ export const CustomButton = styled.button<Omit<IButton, 'onClick' | 'text'>>`
 
   height: 50px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   :hover {
     opacity: 0.7;
   }

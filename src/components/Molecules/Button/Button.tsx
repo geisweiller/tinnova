@@ -13,7 +13,7 @@ const Button = ({ loading, text, handleClick, disabled }: IButton) => {
   }, [loading, text]);
 
   return (
-    <S.CustomButton onClick={handleClick} disabled={disabled}>
+    <S.CustomButton onClick={handleClick} disabled={disabled} data-testid="button">
       <HandleLoading />
     </S.CustomButton>
   );

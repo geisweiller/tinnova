@@ -15,7 +15,6 @@ const List = () => {
   const handleDelete = useCallback(
     (cpf) => {
       const newData = data.filter((item) => item.cpf !== cpf);
-      console.log(newData);
       setData(newData);
       localStorage.setItem('data', JSON.stringify(newData));
     },
@@ -45,7 +44,13 @@ const List = () => {
         accessor: 'delete',
         className: 'delete',
         Cell: ({ row: { original } }: any) => {
-          return <img src={IActions.DeleteIcon} onClick={() => handleDelete(original.cpf)} />;
+          return (
+            <img
+              src={IActions.DeleteIcon}
+              onClick={() => handleDelete(original.cpf)}
+              data-testid="delete"
+            />
+          );
         },
       },
     ],
@@ -53,7 +58,7 @@ const List = () => {
   );
 
   return (
-    <S.Container>
+    <S.Container data-testId="list">
       <Molecules.Table columns={columns} data={data} />
       <Molecules.Button text="Voltar" handleClick={() => history.push('/')} />
     </S.Container>

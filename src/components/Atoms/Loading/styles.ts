@@ -1,35 +1,24 @@
-import styled from 'styled-components';
 import { theme } from '../../../constants/theme';
 
-export const CustomSpinner = styled.svg`
-  animation: rotate 2s linear infinite;
+import styled, { keyframes } from 'styled-components';
 
-  width: 20px;
-  height: 20px;
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
-  .path {
-    stroke: '${theme.colors.white}';
-    stroke-linecap: round;
-    animation: dash 1.5s ease-in-out infinite;
-  }
+export const CustomSpinner = styled.div`
+  animation: ${rotate360} 1s linear infinite;
+  transform: translateZ(0);
 
-  @keyframes rotate {
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  @keyframes dash {
-    0% {
-      stroke-dasharray: 1, 150;
-      stroke-dashoffset: 0;
-    }
-    50% {
-      stroke-dasharray: 90, 150;
-      stroke-dashoffset: -35;
-    }
-    100% {
-      stroke-dasharray: 90, 150;
-      stroke-dashoffset: -124;
-    }
-  }
+  border-right: 3px solid ${theme.colors.white};
+  border-bottom: 3px solid ${theme.colors.white};
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 `;

@@ -39,10 +39,10 @@ const CustomForm: React.FC = () => {
   return (
     <S.Container>
       <Form onSubmit={handleSubmit} ref={formRef}>
-        <Atoms.Input name="name" label="Nome completo (sem abreviações)" />
-        <Atoms.Input name="email" label="E-mail" />
-        <Atoms.Input name="cpf" label="CPF" />
-        <Atoms.Input name="phone" label="Telefone" />
+        <Atoms.Input name="name" label="Nome completo (sem abreviações)" data-testid="name" />
+        <Atoms.Input name="email" label="E-mail" data-testid="email" />
+        <Atoms.Input name="cpf" label="CPF" data-testid="cpf" />
+        <Atoms.Input name="phone" label="Telefone" data-testid="phone" />
         <Molecules.Button type="submit" text="Cadastrar" loading={loading} />
       </Form>
     </S.Container>
