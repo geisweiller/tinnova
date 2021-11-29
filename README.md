@@ -1,8 +1,5 @@
 # Teste Tinnova
 
-## Instruções:
-
-Para rodar o app é necessário instalar algumas dependências:
 
 ### Descrição:
 
@@ -10,6 +7,10 @@ Para rodar o app é necessário instalar algumas dependências:
  unform : https://unform.dev/ (para controle do formulário)
  react-table: https://react-table.tanstack.com/ (para listagem das informações inseridas)
  yup: https://github.com/jquense/yup (para validação das informações) 
+ 
+## Instruções:
+
+Para rodar o app é necessário instalar algumas dependências:
 
 1. É necessário instalar os pacotes de dependências do projeto através do seguinte comando:
 
