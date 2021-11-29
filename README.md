@@ -7,6 +7,7 @@
 * unform : https://unform.dev/ (para controle do formulário)
 * react-table: https://react-table.tanstack.com/ (para listagem das informações inseridas)
 * yup: https://github.com/jquense/yup (para validação das informações) 
+* axios: https://github.com/axios/axios (para conexão com a api fornecida)
  
 ## Instruções:
 
